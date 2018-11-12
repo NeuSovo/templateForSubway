@@ -1,0 +1,140 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 部门管理
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th
+					th 部门名称
+					th 负责人
+					th 职务
+					th 联系电话
+					th 操作
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td.collapsing
+							.ui.fitted.toggle.checkbox
+								input.hidden(type='checkbox', tabindex='0')
+								label
+						td 部门#{n}
+						td 李旭成
+						td 部长
+						td 123456#{n++}
+						td
+							.ui.vertical.animated.button.primary.basic.left.floated.edit_depart
+								.hidden.content 编辑
+								.visible.content
+									i.edit.icon
+							a.ui.vertical.animated.button.primary.basic.right.floated.add_account
+								.hidden.content 分配
+								.visible.content
+									i.add.user.icon
+			tfoot
+				tr
+					th
+					th(colspan=5)
+						button.ui.labeled.icon.button.positive.right.floated.add_depart
+							i.pause.icon
+							|   添加部门
+						button.ui.labeled.icon.button.negative.right.floated.disabled.my_remove
+							i.pause.icon
+							|   删除部门
+		.ui.modal.depart
+			//i.close.icon
+			.header
+				| 添加部门
+			.image.content
+				.ui.form
+					.four.fields
+						.field
+							input(type='text' placeholder='部门名称')
+						.field
+							input(type='text' placeholder='负责人')
+						.field
+							input(type='text' placeholder='职位')
+						.field
+							input(type='number' placeholder='电话')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.modal.edit
+			//i.close.icon
+			.header
+				| 编辑部门
+			.image.content
+				.ui.form
+					.four.fields
+						.field
+							input(type='text' placeholder='部门名称')
+						.field
+							input(type='text' placeholder='负责人')
+						.field
+							input(type='text' placeholder='职位')
+						.field
+							input(type='number' placeholder='电话')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.modal.account
+			//i.close.icon
+			.header
+				| 分配账号
+			.image.content
+				.ui.form
+					.four.fields
+						.field
+							input(type='text' placeholder='账号')
+						.field
+							input(type='text' placeholder='密码')
+						.field
+							input(type='text' placeholder='姓名')
+						.field
+							input(type='number' placeholder='职位')
+					p 为该部门添加账号后,可在功能->部门管理->分配账号中查看对应信息
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.basic.modal.remove
+			.ui.icon.header
+				i.remove.user.icon
+				|  确认删除部门吗?
+			.content
+				p 删除该部门后,该部门下所有账号会失效!
+			.actions
+				.ui.red.basic.cancel.inverted.button
+					i.remove.icon
+					|       否
+				.ui.green.ok.inverted.button
+					i.checkmark.icon
+					|       是
+
+block script
+	script.
+		var check_num = 0
+		$ ('.add_depart').click (function () {$ ('.ui.modal.depart').modal ('show')})
+		$ ('.edit_depart').click (function () {$ ('.ui.modal.edit').modal ('show')})
+		$ ('.add_account').click (function () {$ ('.ui.modal.account').modal ('show')})
+		$ ('.my_remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
+		$ ('.checkbox').checkbox ({
+			onChecked: function () {
+				check_num++
+				debugger
+				if (check_num > 0) $ ('.my_remove').removeClass ('disabled')
+			},
+			onUnchecked: function () {
+				check_num--
+				if (check_num == 0) $ ('.my_remove').addClass ('disabled')
+			}
+		})

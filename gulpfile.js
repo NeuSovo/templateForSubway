@@ -1,0 +1,21 @@
+const gulp = require ('gulp')
+const pug = require ('gulp-pug')
+const styl = require ('gulp-stylus')
+const plumber = require ('gulp-plumber')
+gulp.task ('views', function buildHTML () {
+	return gulp.src ('src/view/*.pug')
+	.pipe (plumber ())
+	.pipe (pug ({}))
+	.pipe (gulp.dest ('dist/view'))
+})
+gulp.task ('styles', function () {
+	return gulp.src ('src/style/*.styl')
+	.pipe (plumber ())
+	.pipe (styl ())
+	.pipe (gulp.dest ('dist/style'))
+})
+gulp.task ('watch', function () {
+	gulp.watch ('src/view/*.pug', ['views'])
+	gulp.watch ('src/style/*.styl', ['styles'])
+})
+gulp.task ('default', ['views', 'styles', 'watch'])

@@ -1,0 +1,82 @@
+doctype html
+html
+	head
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		title a
+		link(rel='stylesheet' href='../style/semantic.min.css')
+		link(rel='stylesheet' href='../style/base.css')
+		script(src='../javascript/jquery-3.2.1.min.js')
+		script(src='../javascript/semantic.min.js')
+	body
+		header
+			.ui.menu.massive
+				.left.menu
+					a.active.item#main 功能
+					.item
+						p IQ工程管理平台
+				.right.menu
+					.ui.dropdown.item Language
+						i.dropdown.icon
+						.menu
+							a.item 英语
+							a.item 俄语
+							a.item 西班牙语
+					.item
+						p 欢迎您,李旭成
+					.item
+						a.ui.negative.button(href='login.html') 注销
+			.ui.sidebar.inverted.vertical.menu
+				//a.item 1
+				//a.item 2
+				//a.item 3
+				.ui.inverted.accordion
+					.item
+						.title
+							i.dropdown.icon
+							|    部门管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='department.html')
+									| 添加部门
+								a.item(href='account.html')
+									| 分配账号
+					.item
+						.title
+							i.dropdown.icon
+							|   人员管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='member.html')
+									| 员工信息
+								a.item(href='member_detail.html')
+									| 详细信息
+					.item
+						.title.active
+							i.dropdown.icon
+							|   物资管理
+					.item
+						.title.active
+							i.dropdown.icon
+							|   技术管理
+					.item
+						.title.active
+							i.dropdown.icon
+							|   安全管理
+					.item
+						.title.active
+							i.dropdown.icon
+							|   验收管理
+
+			block header
+		section
+			block content
+		footer
+			block footer
+		script.
+			$ ('#main').click (function () {
+				$ ('.sidebar').sidebar ('toggle')
+			})
+			$ ('.ui.accordion').accordion ()
+			$ ('.ui.dropdown').dropdown ()
+		block script
+

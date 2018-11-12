@@ -1,0 +1,55 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 员工详细信息
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取部门
+				.divider
+				.item
+					| 部门1
+				.item
+					| 部门2
+				.item
+					| 部门3
+		a(href='member.html')
+			button.ui.right.labeled.icon.button.primary.basic
+					i.right.info.icon
+					|   查看缩略
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 员工工号
+					th 头像
+					th 姓名
+					th 性别
+					th 民族
+					th 血型
+					th 身份证
+					th 出生年月
+					th 职位
+					th 部门
+					th 联系方式
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td A2345
+						td
+							img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg').ui.small.image.rounded.my_img
+						td 李旭成
+						td 男
+						td 汉族
+						td o型
+						td 6101221999999999
+						td 1980.12.12
+						td 部长
+						td 项目部
+						td 123456#{n++}
+block script
+	script.
+		$ ('.ui.dropdown').dropdown ()

@@ -1,0 +1,70 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 分配账号
+		h4.ui.header.divided 部门名称:电力变电
+		table.ui.table.celled#table.line.single.fixed.striped
+			thead
+				tr.center.aligned
+					th 序号
+					th 账号
+					th 密码
+					th 姓名
+					th 职位
+					th 操作
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td 01234
+						td zhangsan
+						td 123456#{n++}
+						td 张三
+						td 部长
+						td
+							.ui.vertical.animated.button.primary.basic.left.floated.my_edit
+								.hidden.content 编辑
+								.visible.content
+									i.edit.icon
+							.ui.vertical.animated.button.negative.basic.right.floated.my_remove
+								.hidden.content 删除
+								.visible.content
+									i.add.user.icon
+		.ui.modal.edit
+			//i.close.icon
+			.header
+				| 编辑账号
+			.image.content
+				.ui.form
+					.four.fields
+						.field
+							input(type='text' placeholder='账号')
+						.field
+							input(type='text' placeholder='密码')
+						.field
+							input(type='text' placeholder='姓名')
+						.field
+							input(type='number' placeholder='职位')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.basic.modal.remove
+			.ui.icon.header
+				i.remove.user.icon
+				|  确认删除账号吗?
+			.content
+				p 删除账号后该用户无法登陆!
+			.actions
+				.ui.red.basic.cancel.inverted.button
+					i.remove.icon
+					|       否
+				.ui.green.ok.inverted.button
+					i.checkmark.icon
+					|       是
+block script
+	script.
+		$ ('.my_remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
+		$ ('.my_edit').click (function () {$ ('.ui.modal.edit').modal ('show')})

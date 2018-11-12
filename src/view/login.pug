@@ -1,0 +1,80 @@
+doctype html
+html
+	head
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		title a
+		link(rel='stylesheet' href='../style/semantic.min.css')
+		script(src='../javascript/jquery-3.2.1.min.js')
+		script(src='../javascript/semantic.min.js')
+		style.
+			.bg img {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			.content {
+				position: absolute;
+				background: rgba(255, 255, 255, .8);
+				top: 20vh;
+				right: 10vw;
+				padding: 20px 40px;
+				border-radius: 20px;
+			}
+
+			.title {
+				position: absolute;
+				top: 20vh;
+				left: 10vw;
+				font-size: 6rem;
+				font-family: Times, TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+			}
+
+			.title p:first-child {
+				font-weight: 600;
+			}
+
+			.title p {
+				text-shadow: 5px 5px 10px #666;
+			}
+
+			.label {
+				font-size: 1.5rem;
+			}
+
+			.content div {
+				display: block;
+				margin-top: 20px;
+			}
+
+			button.button {
+				margin-left: 80px !important;
+				margin-top: 40px !important;
+			}
+
+			.forget {
+				text-align: center;
+			}
+			.input{ margin-top: 40px!important;}
+	body
+		.bg
+			img(src='../static/bg.jpg')
+		.title
+			p 欢迎使用
+			p IQ工程管理平台
+		.content
+			.label 用户名
+			.ui.left.icon.input.massive.transparent
+				input(type='text', placeholder='输入账号')
+				i.spy.icon
+			.label 密码
+			.ui.left.icon.input.massive.transparent
+				input(type='password', placeholder='输入密码')
+				i.keyboard.icon
+			div
+				a(href='department.html')
+					button.ui.button.icon.right.labeled.positive.massive
+						i.right.arrow.icon
+						| 登录
+				.forget
+					a 忘记密码?
