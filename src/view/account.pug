@@ -2,7 +2,20 @@ extends base.pug
 block content
 	.ui.segment
 		h1.ui.header.aligned.center 分配账号
-		h4.ui.header.divided 部门名称:电力变电
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取部门
+				.divider
+				.item
+					| 部门1
+				.item
+					| 部门2
+				.item
+					| 部门3
 		table.ui.table.celled#table.line.single.fixed.striped
 			thead
 				tr.center.aligned
@@ -30,6 +43,26 @@ block content
 								.hidden.content 删除
 								.visible.content
 									i.add.user.icon
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
+			tfoot
+				tr
+					th(colspan=6)
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
 		.ui.modal.edit
 			//i.close.icon
 			.header

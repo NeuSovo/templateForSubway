@@ -16,9 +16,6 @@ block content
 					| 部门2
 				.item
 					| 部门3
-		button.ui.labeled.icon.button.positive.my_add_member
-			i.add.user.icon
-			|   添加
 		a(href='member_detail.html')
 			button.ui.right.labeled.icon.button.primary
 				i.right.info.icon
@@ -28,14 +25,13 @@ block content
 				i.download.icon
 				|   导入
 			.or
-			button.ui.right.labeled.icon.button.my_export.disabled
+			button.ui.right.labeled.icon.button.my_export
 				i.upload.icon
 				|   导出
 
 		table.ui.table.celled#table.line.single.fixed
 			thead
 				tr.center.aligned
-					th
 					th 员工工号
 					th 姓名
 					th 职位
@@ -47,29 +43,48 @@ block content
 				- var n=0
 				while n < 10
 					tr.center.aligned
-						td.collapsing
-							.ui.fitted.toggle.checkbox
-								input.hidden(type='checkbox', tabindex='0')
-								label
 						td A2345
 						td 李旭成
 						td 部长
 						td 项目部
 						td 123456#{n++}
 						td
-							a.ui.vertical.animated.button.positive.basic.left.floated.my_qrcode
+							a.ui.vertical.animated.button.positive.basic.right.floated.my_qrcode
 								.hidden.content 二维码
 								.visible.content
 									i.qrcode.icon
-							a.ui.vertical.animated.button.primary.basic.center.floated.my_edit_member
+							a.ui.vertical.animated.button.primary.basic.left.floated.my_edit_member
 								.hidden.content 编辑
 								.visible.content
 									i.edit.icon
-							a.ui.vertical.animated.button.negative.basic.right.floated.my_remove
+							a.ui.vertical.animated.button.negative.basic.center.floated.my_remove
 								.hidden.content 删除
 								.visible.content
 									i.remove.user.icon
 
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
+			tfoot
+				tr
+					th(colspan=6)
+						button.ui.labeled.icon.button.positive.right.floated.add_depart
+							i.users.icon
+							|   添加员工
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
 		.ui.modal.member.large
 			//i.close.icon
 			.header
@@ -236,19 +251,8 @@ block content
 					i.checkmark.icon
 block script
 	script.
-		var num = 0
-		$ ('.my_add_member').click (function () {$ ('.ui.modal.member').modal ('show')})
+		$ ('.add_depart').click (function () {$ ('.ui.modal.member').modal ('show')})
 		$ ('.my_edit_member').click (function () {$ ('.ui.modal.edit').modal ('show')})
 		$ ('.my_qrcode').click (function () {$ ('.ui.modal.qrcode').modal ('show')})
 		$ ('.my_remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
 		$ ('.ui.dropdown').dropdown ()
-		$ ('.checkbox').checkbox ({
-			onChecked: function () {
-				num++
-				if (num > 0) $ ('.my_export').removeClass ('disabled')
-			},
-			onUnchecked: function () {
-				num--
-				if (num == 0) $ ('.my_export').addClass ('disabled')
-			}
-		})

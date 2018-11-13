@@ -5,7 +5,6 @@ block content
 		table.ui.table.celled#table.line.single.fixed
 			thead
 				tr.center.aligned
-					th
 					th 部门名称
 					th 负责人
 					th 职务
@@ -15,10 +14,6 @@ block content
 				- var n=0
 				while n < 10
 					tr.center.aligned
-						td.collapsing
-							.ui.fitted.toggle.checkbox
-								input.hidden(type='checkbox', tabindex='0')
-								label
 						td 部门#{n}
 						td 李旭成
 						td 部长
@@ -28,20 +23,39 @@ block content
 								.hidden.content 编辑
 								.visible.content
 									i.edit.icon
-							a.ui.vertical.animated.button.primary.basic.right.floated.add_account
+							.ui.vertical.animated.button.negative.basic.center.floated.remove_depart
+								.hidden.content 删除
+								.visible.content
+									i.remove.user.icon
+							.ui.vertical.animated.button.positive.basic.right.floated.add_account
 								.hidden.content 分配
 								.visible.content
 									i.add.user.icon
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
 			tfoot
 				tr
-					th
 					th(colspan=5)
 						button.ui.labeled.icon.button.positive.right.floated.add_depart
-							i.pause.icon
+							i.users.icon
 							|   添加部门
-						button.ui.labeled.icon.button.negative.right.floated.disabled.my_remove
-							i.pause.icon
-							|   删除部门
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+
+
 		.ui.modal.depart
 			//i.close.icon
 			.header
@@ -122,19 +136,7 @@ block content
 
 block script
 	script.
-		var check_num = 0
 		$ ('.add_depart').click (function () {$ ('.ui.modal.depart').modal ('show')})
 		$ ('.edit_depart').click (function () {$ ('.ui.modal.edit').modal ('show')})
 		$ ('.add_account').click (function () {$ ('.ui.modal.account').modal ('show')})
-		$ ('.my_remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
-		$ ('.checkbox').checkbox ({
-			onChecked: function () {
-				check_num++
-				debugger
-				if (check_num > 0) $ ('.my_remove').removeClass ('disabled')
-			},
-			onUnchecked: function () {
-				check_num--
-				if (check_num == 0) $ ('.my_remove').addClass ('disabled')
-			}
-		})
+		$ ('.remove_depart').click (function () {$ ('.ui.modal.remove').modal ('show')})

@@ -50,6 +50,26 @@ block content
 						td 部长
 						td 项目部
 						td 123456#{n++}
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
+			tfoot
+				tr
+					th(colspan=11)
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
 block script
 	script.
 		$ ('.ui.dropdown').dropdown ()
