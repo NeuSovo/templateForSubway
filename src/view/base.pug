@@ -54,14 +54,39 @@ html
 						.title.active
 							i.dropdown.icon
 							|   物资管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='material.html')
+									| 物料信息
+								a.item(href='material_history.html')
+									| 操作记录
 					.item
 						.title.active
 							i.dropdown.icon
 							|   技术管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='technology.html')
+									| 技术信息
+					.item
+						.title.active
+							i.dropdown.icon
+							|   设备管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='device.html')
+									| 设备信息
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='device_detail.html')
+									| 设备详情
 					.item
 						.title.active
 							i.dropdown.icon
 							|   安全管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='safe.html')
+									| 安全信息
 					.item
 						.title.active
 							i.dropdown.icon
@@ -77,6 +102,6 @@ html
 				$ ('.sidebar').sidebar ('toggle')
 			})
 			$ ('.ui.accordion').accordion ()
-			$ ('.ui.dropdown').dropdown ()
+
 		block script
 

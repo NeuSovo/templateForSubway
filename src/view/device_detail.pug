@@ -1,0 +1,75 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 设备详情
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取部门
+				.divider
+				.item
+					| 部门1
+				.item
+					| 部门2
+				.item
+					| 部门3
+		a(href='device.html')
+			button.ui.right.labeled.icon.button.primary.basic
+				i.right.info.icon
+				|   设备信息
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 编号
+					th 设备名称
+					th 站点
+					th 安装位置
+					th 主要部件生产厂家
+					th 材料名称
+					th 规格型号
+					th 进场时间
+					th 生产厂家
+					th 合格证号
+					th 使用部位
+
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td a123
+						td 设备#{n++}
+						td 站点
+						td 安装位置
+						td 主要部件生产厂家
+						td 材料名称
+						td 规格型号
+						td 进场时间
+						td 生产厂家
+						td 合格证号
+						td 使用部位
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
+			tfoot
+				tr
+					th(colspan=9)
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+block script
+	script.
+		$ ('.ui.dropdown').dropdown ()

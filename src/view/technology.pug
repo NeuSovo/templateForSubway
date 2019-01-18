@@ -1,0 +1,325 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 技术信息
+		.ui.floating.labeled.icon.dropdown.button.one
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取专业
+				.divider
+				.item(data-value=0)
+					| 全部
+				.item(data-value=1)
+					| 专业2
+				.item(data-value=2)
+					| 专业3
+		.ui.floating.labeled.icon.dropdown.button.two
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取项目
+				.divider
+				.item(data-value=3)
+					| 全部
+				.item(data-value=4)
+					| 环网电缆
+				.item(data-value=5)
+					| 环网电缆
+		.ui.floating.labeled.icon.dropdown.button.three
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取类别
+				.divider
+				.item(data-value=6)
+					| 全部
+				.item(data-value=7)
+					| 图纸会审
+				.item(data-value=8)
+					| 作业指导书
+		.ui.animated.fade.right.floated.button
+			.hidden.content
+				i.upload.icon
+			.visible.content 导出全部二维码
+		.ui.buttons.right.floated
+			button.ui.labeled.icon.button.right.floated.my_import
+				i.download.icon
+				|   导入
+			.or
+			button.ui.right.labeled.icon.button.my_export
+				i.upload.icon
+				|   导出
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 编号
+					th 标题
+					th 部门
+					th 项目
+					th 类别
+					th 操作
+
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td 001#{n++}
+						td 一号线二期正线变电所大型设备吊装及运输方案
+						td 电力变电
+						td 环网电缆
+						td 图纸会审
+						td
+							a.ui.vertical.animated.button.positive.basic.center.floated.qrcode
+								.visible.content 二维码
+								.hidden.content
+									i.qrcode.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.edit
+								.visible.content 编辑
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.disabled
+								.visible.content 查看
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.negative.basic.center.floated.remove
+								.visible.content 删除
+								.hidden.content
+									i.remove.user.icon
+
+			tfoot
+				tr
+					th(colspan=6)
+						button.ui.labeled.icon.button.positive.right.floated.add
+							i.users.icon
+							|   添加文件
+						button.ui.labeled.icon.button.positive.left.floated.append
+							i.users.icon
+							span   添加类别
+						button.ui.labeled.icon.button.blue.left.floated.update
+							i.users.icon
+							span   修改类别
+						button.ui.labeled.icon.button.negative.left.floated.delete.disabled
+							i.users.icon
+							span  删除类别
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+		.ui.modal.edit.large
+			i.close.icon
+			.header
+				| 编辑文件
+			.image.content
+				.ui.form
+					.field
+						label 文件标题
+						.fields
+							.field
+								input(type='text' placeholder='请输入文件标题' value='一号线二期正线变电所大型设备吊装及运输方案')
+					.field
+						label 点击图片上传文件
+						.ui.move.reveal.my_upload
+							.visible.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/wireframe/square-image.png')
+							.hidden.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg')
+
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.basic.modal.remove
+			.ui.icon.header
+				i.remove.user.icon
+				|  确认删除文件吗
+			.content
+				p 该文件的所有信息会清空,重新添加用户时二维码重新生成!
+			.actions
+				.ui.red.basic.cancel.inverted.button
+					i.remove.icon
+					|       否
+				.ui.green.ok.inverted.button
+					i.checkmark.icon
+					|       是
+
+		.ui.modal.qrcode.large.basic.icon
+			.ui.icon.header
+				img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg').icon.my_img
+				| 李徐成
+			.image.content
+				.description
+					.ui.vertically.divided.grid(style='margin-left:-4rem')
+						.four.column.row
+							.column
+								p 工号
+							.column
+								p A123
+							.column
+								p 头像
+							.column
+								img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg' style='margin:0 0;').ui.mini.image.rounded.my_img
+						.four.column.row
+							.column
+								p 联系方式
+							.column
+								p 123456789
+							.column
+								p 性别
+							.column
+								p 男
+						.four.column.row
+							.column
+								p 民族
+							.column
+								p 汉族
+							.column
+								p 血型
+							.column
+								p o型
+						.four.column.row
+							.column
+								p 身份证
+							.column
+								p 6101221111111
+							.column
+								p 出生日期
+							.column
+								p 1999.99.99
+						.four.column.row
+							.column
+								p 职位
+							.column
+								p 部长
+							.column
+								p 部门
+							.column
+								p 技术部
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 下载二维码
+					i.checkmark.icon
+
+		.ui.modal.add.large
+			i.close.icon
+			.header
+				| 新增文件
+			.image.content
+				.ui.form
+					.field
+						label 文件标题
+						.fields
+							.field
+								input(type='text' placeholder='请输入文件标题')
+					.field
+						label 点击图片上传文件
+						.ui.move.reveal.my_upload
+							.visible.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/wireframe/square-image.png')
+							.hidden.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg')
+
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+
+		.ui.modal.append.large
+			//i.close.icon
+			.header
+				| 新增分类
+			.image.content
+				.ui.form
+					.field
+						input(type='text' placeholder='请输入分类名称')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.modal.update.large
+			//i.close.icon
+			.header
+				| 更改分类
+			.image.content
+				.ui.form
+					.field
+						input(type='text' placeholder='设备名称' value='杂散电流')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+block script
+	script.
+		let append = ['添加专业', '添加项目', '添加类别']
+		let update = ['修改专业', '修改项目', '修改类别']
+		let del = ['删除专业', '删除项目', '删除类别']
+		$ ('a.qrcode').click (function () {$ ('.modal.qrcode').modal ('show')})
+		$ ('a.edit').click (function () {$ ('.ui.modal.edit').modal ('show')})
+		$ ('a.remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
+
+
+		$ ('button.append').click (function () {$ ('.ui.modal.append').modal ('show')})
+		$ ('button.update').click (function () {$ ('.ui.modal.update').modal ('show')})
+
+		$ ('button.add').click (function () {$ ('.ui.modal.add').modal ('show')})
+		$ ('.ui.dropdown').dropdown ({
+			onChange (value) {
+				isIndex (value)
+			}
+		})
+		function isIndex (value) {
+			if (value == 0) {
+				$ ('.dropdown.two').hide ()
+				$ ('.dropdown.three').hide ()
+				$ ('button.append').text (append[0]).show ()
+				$ ('button.delete').hide ()
+				$ ('button.update').hide ()
+				$('button.add').hide()
+			} else if (value > 0 && value <= 3) {
+				$ ('.dropdown.two').show ()
+				$ ('.dropdown.three').hide ()
+				$('button.add').hide()
+				$ ('button.append').text (append[1]).show ()
+				$ ('button.delete').text (del[0]).show ()
+				$ ('button.update').text (update[0]).show ()
+
+			} else if (value > 3 && value <= 6) {
+				$ ('.dropdown.two').show ()
+				$ ('.dropdown.three').show ()
+				$('button.add').hide()
+				$ ('button.append').text (append[2]).show ()
+				$ ('button.delete').text (del[1]).show ()
+				$ ('button.update').text (update[1]).show ()
+			} else if (value > 6 && value <= 8) {
+				$ ('.dropdown.two').show ()
+				$ ('.dropdown.three').show ()
+				$('button.add').show()
+				$ ('button.append').hide ()
+				$ ('button.delete').text (del[2]).show ()
+				$ ('button.update').text (update[2]).show ()
+			}
+		}
+		isIndex (0)

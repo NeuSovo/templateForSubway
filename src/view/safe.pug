@@ -1,0 +1,280 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 安全管理
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 项目分类
+				.divider
+				.item(data-value=0)
+					| 全部
+				.item(data-value=1)
+					| 杂散电流
+				.item(data-value=2)
+					| 环网电缆
+		.ui.animated.fade.right.floated.button
+			.hidden.content
+				i.upload.icon
+			.visible.content 导出全部二维码
+		.ui.buttons.right.floated
+			button.ui.labeled.icon.button.right.floated.my_import
+				i.download.icon
+				|   导入
+			.or
+			button.ui.right.labeled.icon.button.my_export
+				i.upload.icon
+				|   导出
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 编号
+					th 标题
+					th 项目
+					th 操作
+
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td a123#{n++}
+						td 一号线二期正线变电所大型设备吊装及运输方案
+						td 杂散电流
+						td
+							a.ui.vertical.animated.button.positive.basic.center.floated.qrcode
+								.visible.content 二维码
+								.hidden.content
+									i.qrcode.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.edit
+								.visible.content 编辑
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.disabled
+								.visible.content 查看详情
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.negative.basic.center.floated.remove
+								.visible.content 删除
+								.hidden.content
+									i.remove.user.icon
+
+			tfoot
+				tr
+					th(colspan=4)
+						button.ui.labeled.icon.button.positive.right.floated.add
+							i.users.icon
+							|   添加文件
+						button.ui.labeled.icon.button.positive.left.floated.append
+							i.users.icon
+							|   添加分类
+						button.ui.labeled.icon.button.blue.left.floated.update
+							i.users.icon
+							|   修改分类
+						button.ui.labeled.icon.button.negative.left.floated.delete.disabled
+							i.users.icon
+							|   删除分类
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+		// item 操作
+		.ui.modal.edit.large
+			i.close.icon
+			.header
+				| 编辑文件
+			.image.content
+				.ui.form
+					.field
+						label 文件标题
+						.fields
+							.field
+								input(type='text' placeholder='请输入文件标题' value='一号线二期正线变电所大型设备吊装及运输方案')
+					.field
+						label 点击图片上传文件
+						.ui.move.reveal.my_upload
+							.visible.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/wireframe/square-image.png')
+							.hidden.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg')
+
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.basic.modal.remove
+			.ui.icon.header
+				i.remove.user.icon
+				|  确认删除文件吗
+			.content
+				p 该文件的所有信息会清空,重新添加用户时二维码重新生成!
+			.actions
+				.ui.red.basic.cancel.inverted.button
+					i.remove.icon
+					|       否
+				.ui.green.ok.inverted.button
+					i.checkmark.icon
+					|       是
+
+		.ui.modal.qrcode.large.basic.icon
+			.ui.icon.header
+				img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg').icon.my_img
+				| 李徐成
+			.image.content
+				.description
+					.ui.vertically.divided.grid(style='margin-left:-4rem')
+						.four.column.row
+							.column
+								p 工号
+							.column
+								p A123
+							.column
+								p 头像
+							.column
+								img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg' style='margin:0 0;').ui.mini.image.rounded.my_img
+						.four.column.row
+							.column
+								p 联系方式
+							.column
+								p 123456789
+							.column
+								p 性别
+							.column
+								p 男
+						.four.column.row
+							.column
+								p 民族
+							.column
+								p 汉族
+							.column
+								p 血型
+							.column
+								p o型
+						.four.column.row
+							.column
+								p 身份证
+							.column
+								p 6101221111111
+							.column
+								p 出生日期
+							.column
+								p 1999.99.99
+						.four.column.row
+							.column
+								p 职位
+							.column
+								p 部长
+							.column
+								p 部门
+							.column
+								p 技术部
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 下载二维码
+					i.checkmark.icon
+
+		// global 操作
+		.ui.modal.add.large
+			i.close.icon
+			.header
+				| 新增文件
+			.image.content
+				.ui.form
+					.field
+						label 文件标题
+						.fields
+							.field
+								input(type='text' placeholder='请输入文件标题')
+					.field
+						label 点击图片上传文件
+						.ui.move.reveal.my_upload
+							.visible.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/wireframe/square-image.png')
+							.hidden.content
+								img.ui.small.image(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg')
+
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		// 分级操作
+		.ui.modal.append.large
+			//i.close.icon
+			.header
+				| 新增分类
+			.image.content
+				.ui.form
+					.field
+						input(type='text' placeholder='请输入分类名称')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.modal.update.large
+			//i.close.icon
+			.header
+				| 更改分类
+			.image.content
+				.ui.form
+					.field
+						input(type='text' placeholder='设备名称' value='杂散电流')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+
+
+block script
+	script.
+		let selete
+		$ ('a.qrcode').click (function () {$ ('.modal.qrcode').modal ('show')})
+		$ ('a.edit').click (function () {$ ('.ui.modal.edit').modal ('show')})
+		$ ('a.remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
+
+
+		$ ('button.append').click (function () {$ ('.ui.modal.append').modal ('show')})
+		$ ('button.update').click (function () {$ ('.ui.modal.update').modal ('show')})
+
+		$ ('button.add').click (function () {$ ('.ui.modal.add').modal ('show')})
+
+		$ ('.ui.dropdown').dropdown ({
+			allowReselection: true,
+			onChange: function (value, text) {
+				selete = {id: value, text}
+				isIndex (value)
+			}
+		})
+		function isIndex (x) {
+			if (parseInt (x)) {
+				$ ('button.append').hide ()
+				$ ('button.add').show ()
+				$ ('button.update').show ()
+				$ ('button.delete').show ()
+			} else {
+				$ ('button.append').show ()
+				$ ('button.add').hide ()
+				$ ('button.update').hide ()
+				$ ('button.delete').hide ()
+			}
+		}
+		isIndex (0)
+

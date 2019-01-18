@@ -1,0 +1,70 @@
+extends base.pug
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 操作记录
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取部门
+				.divider
+				.item
+					| 部门1
+				.item
+					| 部门2
+				.item
+					| 部门3
+		a(href='material.html')
+			button.ui.right.labeled.icon.button.primary.basic
+					i.right.info.icon
+					|   物料信息
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 编号
+					th 物资名称
+					th 型号
+					th 数量
+					th 单位
+					th 操作时间
+					th 操作类型
+					th 数量
+					th 操作人
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td A2345
+						td 钢材
+						td AS-123
+						td 20#{n++}
+						td 吨
+						td 2018-01-01
+						td 入库
+						td 20
+						td 张鸿浩
+			.ui.icon.orange.message
+				i.hide.icon
+				.content
+					.header
+						| 目前没有一条数据
+					p 请试着添加一条数据后再试。
+			tfoot
+				tr
+					th(colspan=9)
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+block script
+	script.
+		$ ('.ui.dropdown').dropdown ()
