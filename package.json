@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@antv/g2": "^3.4.10",
     "semantic-ui": "^2.4.2"
   },
   "devDependencies": {
