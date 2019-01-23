@@ -1,0 +1,250 @@
+extends base.pug
+block link
+	script(src="../javascript/laydate/laydate.js")
+
+block content
+	.ui.segment
+		h1.ui.header.aligned.center 进度管理
+		.ui.floating.labeled.icon.dropdown.button
+			i.filter.icon
+			span.text 全部
+			.menu
+				.header
+					i.tags.icon
+					| 选取部门
+				.divider
+				.item
+					| 全部部门
+				.item
+					| 项目部
+				.item
+					| 电力变电
+		.ui.animated.fade.right.floated.button
+			.hidden.content
+				i.upload.icon
+			.visible.content 导出全部二维码
+		.ui.buttons.right.floated
+			button.ui.labeled.icon.button.right.floated.my_import
+				i.download.icon
+				|   导入
+			.or
+			button.ui.right.labeled.icon.button.my_export
+				i.upload.icon
+				|   导出
+		table.ui.table.celled#table.line.single.fixed
+			thead
+				tr.center.aligned
+					th 编号
+					th 施工地点
+					th 作业名称
+					th 单位
+					th 开累完成率
+					th 设计总量
+					th 开累完成量
+					th 剩余总量
+					th.four.wide 操作
+
+
+			tbody
+				- var n=0
+				while n < 10
+					tr.center.aligned
+						td #{n++}
+						td 车站
+						td 设备安装
+						td 台
+						td 85%
+						td 33
+						td 6
+						td 27
+						td
+							a.ui.vertical.animated.button.positive.basic.center.floated.qrcode
+								.visible.content 二维码
+								.hidden.content
+									i.qrcode.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.edit
+								.visible.content 编辑
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated.day
+								.visible.content 日开累
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.primary.basic.center.floated(href='schedule_item.html')
+								.visible.content 任务报表
+								.hidden.content
+									i.edit.icon
+							a.ui.vertical.animated.button.negative.basic.center.floated.remove
+								.visible.content 删除
+								.hidden.content
+									i.remove.user.icon
+
+			tfoot
+				tr
+					th(colspan=9)
+						button.ui.labeled.icon.button.positive.right.floated.add
+							i.users.icon
+							|   添加任务
+						.ui.pagination.menu.right.floated
+							a.item
+								| 1
+							.disabled.item
+								| ...
+							a.item
+								| 10
+							a.item.active
+								| 11
+							a.item
+								| 12
+		// item 操作
+		.ui.modal.edit.large
+			i.close.icon
+			.header
+				| 日开累
+			.image.content
+				.ui.form
+					.field
+						.fields
+							.field
+								label 开累量
+								input(type='text' placeholder='' value='')
+							.field
+								label 开累日期
+								input#layDay(type='text')
+
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+		.ui.basic.modal.remove
+			.ui.icon.header
+				i.remove.user.icon
+				|  确认删除文件吗
+			.content
+				p 该文件的所有信息会清空,重新添加用户时二维码重新生成!
+			.actions
+				.ui.red.basic.cancel.inverted.button
+					i.remove.icon
+					|       否
+				.ui.green.ok.inverted.button
+					i.checkmark.icon
+					|       是
+
+		.ui.modal.qrcode.large.basic.icon
+			.ui.icon.header
+				img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg').icon.my_img
+				| 李徐成
+			.image.content
+				.description
+					.ui.vertically.divided.grid(style='margin-left:-4rem')
+						.four.column.row
+							.column
+								p 工号
+							.column
+								p A123
+							.column
+								p 头像
+							.column
+								img(src='https://semantic-ui.qyears.com/images/avatar/large/steve.jpg' style='margin:0 0;').ui.mini.image.rounded.my_img
+						.four.column.row
+							.column
+								p 联系方式
+							.column
+								p 123456789
+							.column
+								p 性别
+							.column
+								p 男
+						.four.column.row
+							.column
+								p 民族
+							.column
+								p 汉族
+							.column
+								p 血型
+							.column
+								p o型
+						.four.column.row
+							.column
+								p 身份证
+							.column
+								p 6101221111111
+							.column
+								p 出生日期
+							.column
+								p 1999.99.99
+						.four.column.row
+							.column
+								p 职位
+							.column
+								p 部长
+							.column
+								p 部门
+							.column
+								p 技术部
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 下载二维码
+					i.checkmark.icon
+
+		// global 操作
+		.ui.modal.add.large
+			.header
+				| 新增任务
+			.image.content
+				.ui.form
+					.field
+						.fields
+							.field
+								label 施工地点
+								input(type='text')
+							.field
+								label 作业名称
+								input(type='text')
+							.field
+								label 单位
+								input(type='text')
+							.field
+								label 设计总量
+								input(type='text')
+							.field
+								label 完成计划
+								input#layDate(type='text')
+			.actions
+				.ui.black.deny.button
+					| 取消
+				.ui.positive.right.labeled.icon.button
+					| 提交
+					i.checkmark.icon
+block script
+	script.
+		$ ('a.qrcode').click (function () {$ ('.modal.qrcode').modal ('show')})
+		$ ('a.edit').click (function () {$ ('.ui.modal.add').modal ('show')})
+		$ ('a.remove').click (function () {$ ('.ui.modal.remove').modal ('show')})
+		$ ('a.day').click (function () {$ ('.ui.modal.edit').modal ('show')})
+
+
+		$ ('button.add').click (function () {$ ('.ui.modal.add').modal ('show')})
+
+		laydate.render ({
+			elem: '#layDate', //指定元素
+			range: true,
+			done: function (value, date, endDate) {
+				console.log (value); //得到日期生成的值，如：2017-08-18
+				console.log (date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+				console.log (endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+			}
+		});
+		laydate.render ({
+			elem: '#layDay', //指定元素
+			value: new Date (),
+			done: function (value, date, endDate) {
+				console.log (value); //得到日期生成的值，如：2017-08-18
+				console.log (date); //得到日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
+				console.log (endDate); //得结束的日期时间对象，开启范围选择（range: true）才会返回。对象成员同上。
+			}
+		});

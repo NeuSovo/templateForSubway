@@ -7,6 +7,7 @@ html
 		link(rel='stylesheet' href='../style/base.css')
 		script(src='../javascript/jquery-3.2.1.min.js')
 		script(src='../javascript/semantic.min.js')
+		block link
 	body
 		header
 			.ui.menu.massive
@@ -90,7 +91,17 @@ html
 					.item
 						.title.active
 							i.dropdown.icon
-							|   验收管理
+							|   进度管理
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='schedule.html')
+									| 进度信息
+								a.item(href='schedule_detail.html')
+									| 进度详情
+								a.item(href='schedule_chart.html')
+									| 进度报表
+
+
 
 			block header
 		section
@@ -102,6 +113,7 @@ html
 				$ ('.sidebar').sidebar ('toggle')
 			})
 			$ ('.ui.accordion').accordion ()
+			$ ('.ui.dropdown').dropdown ()
 
 		block script
 
