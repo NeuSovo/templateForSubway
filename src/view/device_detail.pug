@@ -20,11 +20,15 @@ block content
 			button.ui.right.labeled.icon.button.primary.basic
 				i.right.info.icon
 				|   设备信息
-		table.ui.table.celled#table.line.single.fixed
+		table.ui.structured.table.celled#table.line.single.fixed
 			thead
 				tr.center.aligned
-					th 编号
-					th 设备名称
+					th(rowspan=2) 编号
+					th(rowspan=2) 设备名称
+					th(colspan=12) 基本信息
+					th(colspan=7) 检验试验
+					th(colspan=2) 设备保养要求
+				tr.center.aligned
 					th 站点
 					th 安装位置
 					th 主要部件生产厂家
@@ -34,6 +38,18 @@ block content
 					th 生产厂家
 					th 合格证号
 					th 使用部位
+					th 现场验收结论
+					th 状态（安装/调试）
+					th 自检/验收人（监理）
+					th 实验方式
+					th 取样地点
+					th 取样时间
+					th 取样人
+					th 检验项目
+					th 检验日期
+					th 执行标准
+					th 保养内容
+					th 注意事项
 
 			tbody
 				- var n=0
@@ -41,8 +57,8 @@ block content
 					tr.center.aligned
 						td a123
 						td 设备#{n++}
-						td 站点
-						td 安装位置
+						td 站点#{n}
+						td 位置#{n}
 						td 主要部件生产厂家
 						td 材料名称
 						td 规格型号
@@ -50,6 +66,18 @@ block content
 						td 生产厂家
 						td 合格证号
 						td 使用部位
+						td 现场验收结论
+						td 状态（安装/调试）
+						td 自检/验收人（监理）
+						td 实验方式
+						td 取样地点
+						td 取样时间
+						td 取样人
+						td 检验项目
+						td 检验日期
+						td 执行标准
+						td 保养内容
+						td 注意事项
 			.ui.icon.orange.message
 				i.hide.icon
 				.content
@@ -58,7 +86,7 @@ block content
 					p 请试着添加一条数据后再试。
 			tfoot
 				tr
-					th(colspan=9)
+					th(colspan=23)
 						.ui.pagination.menu.right.floated
 							a.item
 								| 1

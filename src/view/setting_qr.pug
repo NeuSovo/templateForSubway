@@ -1,0 +1,32 @@
+extends base.pug
+block content
+	.ui.segment.qrSet
+		h1.ui.header.aligned.center 二维码定制
+		.ui.divider
+		.ui.container
+			.left
+				span.desc header图片：
+				img.img(src="../static/header.png" style="height:4em")
+			.right
+				button.ui.button 上传
+		.ui.divider
+		.ui.container
+			.left
+				span.desc 二维码模板：
+				img.img(src="../static/qr.png" style="height:6em")
+			.right
+				button.ui.button 上传
+		.ui.divider
+		.ui.container
+			.left
+				span.desc footer图标：
+				img.img(src="../static/logo.png" style="height:4em")
+			.right
+				.ui.button 上传
+		.ui.container
+			.left
+				span.desc footer文字：
+				span 中铁电气化局集团有限公司西安电务工程分公司
+			.right
+				.ui.button 更改
+

@@ -15,6 +15,7 @@ html
 					a.active.item#main 功能
 					.item
 						p IQ工程管理平台
+				img(src="../static/header.png")
 				.right.menu
 					.ui.dropdown.item Language
 						i.dropdown.icon
@@ -100,6 +101,18 @@ html
 									| 进度详情
 								a.item(href='schedule_chart.html')
 									| 进度报表
+					.item
+						.title.active
+							i.dropdown.icon
+							|   系统设置
+						.content
+							.ui.secondary.vertical.pointing.menu
+								a.item(href='setting_qr.html')
+									| 二维码设置
+								a.item(href='setting_backend.html')
+									| 后台设置
+								a.item(href='setting_fronted.html')
+									| 移动端设置
 
 
 
@@ -107,7 +120,11 @@ html
 		section
 			block content
 		footer
-			block footer
+			.main
+				img(src="../static/logo.png")
+				span 中铁电气化局集团有限公司西安电务工程分公司
+			.desc
+				span ©China Railway Electrification Bureau Group Co., Ltd. Xi'an Electrical Engineering Branch
 		script.
 			$ ('#main').click (function () {
 				$ ('.sidebar').sidebar ('toggle')
