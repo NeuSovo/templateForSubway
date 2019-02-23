@@ -1,13 +1,12 @@
-extends base.pug
+extends mobile.pug
 block link
 	script(src="../javascript/g2/g2.min.js")
 	script(src="../javascript/g2/data-set.min.js")
 block content
-	.ui.segment
-		h1.ui.header.aligned.center 开累统计
-		div#mountNode
-
-
+	.content
+		.table
+			.title 任务报表
+			div#mountNode
 block script
 	script.
 		var data = [{
@@ -30,14 +29,13 @@ block script
 		var chart = new G2.Chart ({
 			container: 'mountNode',
 			forceFit: true,
-			height: window.innerHeight - 300,
+			height: 300,
 			padding: 'auto'
 		});
 		chart.source (dv);
 		chart.tooltip (false);
 		chart.legend ({
-			position: 'right-center',
-			offsetX: -100
+			position: 'bottom',
 		});
 		chart.coord ('theta', {
 			radius: 0.75,
@@ -65,16 +63,20 @@ block script
 			position: ['50%', '50%'],
 			html: `<div class="g2-guide-html"><p class="title">设计总量</p><p class="value">${sum}</p></div>`
 		});
-		chart.on ('interval:mouseenter', function (ev) {
+		chart.on ('interval:touchstart', function (ev) {
 			var data = ev.data._origin;
 			$ (".g2-guide-html").css ('opacity', 1);
 			$ (".g2-guide-html .title").text (data.type);
 			$ (".g2-guide-html .value").text (data.value);
 		});
 
-		chart.on ('interval:mouseleave', function () {
+		chart.on ('interval:touchend', function () {
 			$ (".g2-guide-html .title").text ('设计总量');
 			$ (".g2-guide-html .value").text (sum);
 		});
 		chart.render ();
+
+
+
+
 
