@@ -1,0 +1,91 @@
+doctype html
+html
+    head
+        meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+        title a
+        link(rel='stylesheet' href='../style/semantic.min.css')
+        link(rel='stylesheet' href='../style/base.css')
+        script(src='../javascript/jquery-3.2.1.min.js')
+        script(src='../javascript/semantic.min.js')
+        style.
+            .column {
+                text-align: center;
+                display: flex;
+                justify-content: space-between;
+                margin: 20px;
+                flex-wrap: wrap;
+            }
+
+            .column .item {
+                width: 20%;
+                margin: 35px 20px;
+                padding: 30px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 0 5px #ddd;
+                cursor: pointer;
+            }
+            .column .item:hover{
+                background: #f3f3f3;
+            }
+
+            .column i {
+                margin: 0 auto;
+                display: block;
+                font-size: 3em;
+            }
+            .column span{
+                font-size: 1.2em;
+            }
+
+body
+    header
+        .ui.menu.massive
+            .left.menu
+                .item
+                    p IQ工程管理平台
+            img(src="../static/header.png")
+            .right.menu
+                .item
+                    p 欢迎您,李旭成
+                .item
+                    a.ui.negative.button(href='login.html') 注销
+    section
+        .ui.segment(style="margin-top:50px")
+            .column
+                .item
+                    i.address.card.icon
+                    span 部门管理
+                .item
+                    i.users.icon
+                    span 人员管理
+                .item
+                    i.cubes.icon
+                    span 物资管理
+                .item
+                    i.newspaper.icon
+                    span 技术管理
+                .item
+                    i.hdd.icon
+                    span 设备管理
+                .item
+                    i.shield.alternate.icon
+                    span 安全管理
+                .item
+                    i.calendar.check.icon
+                    span 进度管理
+                .item
+                    i.cog.icon
+                    span 系统管理
+    footer
+        .main
+            img(src="../static/logo.png")
+            span 中铁电气化局集团有限公司西安电务工程分公司
+        .desc
+            span ©China Railway Electrification Bureau Group Co., Ltd. Xi'an Electrical Engineering Branch
+    script.
+      $('.ui.accordion').accordion()
+      $('.ui.dropdown').dropdown()
+
+    block script
+
